@@ -12,13 +12,11 @@ CONTRACT bank : public eosio::contract {
 
     [[eosio::action]] void withdraw(name to, asset quantity) {
       require_auth( to );
-      print("sub_balance");
       sub_balance(to,quantity);
-      print("before");
+      string memo = "withdraw";
       action(permission_level{get_self(), "active"_n}, "eosio.token"_n, "transfer"_n,
-        std::make_tuple(get_self(),to,quantity,""))
+        std::make_tuple(get_self(),to,quantity,memo))
       .send();
-      print("after");
     }
 
     [[eosio::action]] void open( const name& owner, const symbol& symbol, const name& ram_payer )
@@ -37,9 +35,6 @@ CONTRACT bank : public eosio::contract {
     }
 
     void transfer(name from, name to, asset quantity, string memo) {
-      print("from: ");
-      print(from);
-      print("\n");
       if(from == get_self() || get_first_receiver() != "eosio.token"_n) return;
       check(memo == "bank deposit", "invalid memo");
       add_balance(from,quantity,from);

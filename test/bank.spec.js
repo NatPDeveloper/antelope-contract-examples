@@ -182,12 +182,9 @@ describe(`${contractCode} Contract`, () => {
                 });
                 let balance2c = res.rows[0].balance.replace(' SYS', '');
 
-                console.log(balance2a);
-                console.log(balance2b);
-                console.log(balance2c);
-                // assert.equal(balance1a, '1000.0000');
-                // assert.equal(balance1b, '1000.0000');
-                // assert.equal(balance1c, '1000.0000');
+                assert.equal(balance2a, '1000.0000');
+                assert.equal(balance2b, '1000.0000');
+                assert.equal(balance2c, '0.0000');
                 done();
             }
             catch (e) {
