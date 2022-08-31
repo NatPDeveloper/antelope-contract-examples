@@ -4,12 +4,22 @@
     "types": [],
     "structs": [
         {
+            "name": "reply",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "testinline",
             "base": "",
             "fields": []
         }
     ],
     "actions": [
+        {
+            "name": "reply",
+            "type": "reply",
+            "ricardian_contract": ""
+        },
         {
             "name": "testinline",
             "type": "testinline",
