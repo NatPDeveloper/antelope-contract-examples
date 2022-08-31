@@ -1,0 +1,53 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.2",
+    "types": [],
+    "structs": [
+        {
+            "name": "testassert",
+            "base": "",
+            "fields": [
+                {
+                    "name": "message",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "testprint",
+            "base": "",
+            "fields": [
+                {
+                    "name": "message",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "testreceiver",
+            "base": "",
+            "fields": []
+        }
+    ],
+    "actions": [
+        {
+            "name": "testassert",
+            "type": "testassert",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "testprint",
+            "type": "testprint",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "testreceiver",
+            "type": "testreceiver",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [],
+    "ricardian_clauses": [],
+    "variants": [],
+    "action_results": []
+}

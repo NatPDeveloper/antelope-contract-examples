@@ -4,14 +4,6 @@ zeus_boxes/
 **/dist/
 **/build/
 **/Common/
-**/eosio.bios/
-**/eosio.boot/
-**/eosio.msig/
-**/eosio.sudo/
-**/eosio.system/
-**/eosio.token/
-**/*.wasm
-**/*.abi
 
 **/Makefile
 **/CMakeCache.txt
