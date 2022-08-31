@@ -52,3 +52,33 @@ ExternalProject_Add(
     INSTALL_COMMAND ""
     BUILD_ALWAYS 1
 )
+
+
+# building:reentry
+
+ExternalProject_Add(
+    reentry
+    SOURCE_DIR reentry
+    BINARY_DIR reentry
+    CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CDT_ROOT}/lib/cmake/cdt/CDTWasmToolchain.cmake
+    UPDATE_COMMAND ""
+    PATCH_COMMAND ""
+    TEST_COMMAND ""
+    INSTALL_COMMAND ""
+    BUILD_ALWAYS 1
+)
+
+
+# building:bank
+
+ExternalProject_Add(
+    bank
+    SOURCE_DIR bank
+    BINARY_DIR bank
+    CMAKE_ARGS -DCMAKE_TOOLCHAIN_FILE=${CDT_ROOT}/lib/cmake/cdt/CDTWasmToolchain.cmake
+    UPDATE_COMMAND ""
+    PATCH_COMMAND ""
+    TEST_COMMAND ""
+    INSTALL_COMMAND ""
+    BUILD_ALWAYS 1
+)

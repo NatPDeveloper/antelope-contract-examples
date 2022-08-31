@@ -33,6 +33,9 @@ CONTRACT receiver : public eosio::contract {
     print("get_sender(): ");
     print(get_sender());
     print("\n");
+    print("get_self(): ");
+    print(get_self());
+    print("\n");
     action(permission_level{get_self(), "active"_n}, "forwarder"_n, "reply"_n,
       std::make_tuple())
     .send();

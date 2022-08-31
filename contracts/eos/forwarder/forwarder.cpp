@@ -25,6 +25,9 @@ CONTRACT forwarder : public eosio::contract {
     print("get_sender(): ");
     print(get_sender());
     print("\n");
+    print("get_self(): ");
+    print(get_self());
+    print("\n");
     action(permission_level{_self, "active"_n}, "receiver"_n, "testreceiver"_n,
       std::make_tuple())
     .send();
@@ -44,6 +47,9 @@ CONTRACT forwarder : public eosio::contract {
     print("\n");
     print("get_sender(): ");
     print(get_sender());
+    print("\n");
+    print("get_self(): ");
+    print(get_self());
     print("\n");
     require_recipient("receiver"_n);
   }
