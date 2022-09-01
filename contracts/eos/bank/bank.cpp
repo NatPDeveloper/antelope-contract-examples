@@ -12,11 +12,12 @@ CONTRACT bank : public eosio::contract {
 
     [[eosio::action]] void withdraw(name to, asset quantity) {
       require_auth( to );
-      sub_balance(to,quantity);
       string memo = "withdraw";
       action(permission_level{get_self(), "active"_n}, "eosio.token"_n, "transfer"_n,
         std::make_tuple(get_self(),to,quantity,memo))
       .send();
+      // no
+      sub_balance(to,quantity);
     }
 
     [[eosio::action]] void open( const name& owner, const symbol& symbol, const name& ram_payer )
@@ -54,6 +55,10 @@ CONTRACT bank : public eosio::contract {
       accounts from_acnts( get_self(), owner.value );
 
       const auto& from = from_acnts.get( value.symbol.code().raw(), "no balance object found" );
+
+      print("balance: ");
+      print(from.balance.amount);
+      print("\n");
       check( from.balance.amount >= value.amount, "overdrawn balance" );
 
       from_acnts.modify( from, owner, [&]( auto& a ) {

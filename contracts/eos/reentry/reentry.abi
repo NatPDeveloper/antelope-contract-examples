@@ -4,39 +4,42 @@
     "types": [],
     "structs": [
         {
-            "name": "testassert",
+            "name": "account",
             "base": "",
             "fields": [
                 {
-                    "name": "message",
-                    "type": "string"
+                    "name": "balance",
+                    "type": "asset"
                 }
             ]
         },
         {
-            "name": "testprint",
+            "name": "attack",
             "base": "",
             "fields": [
                 {
-                    "name": "message",
-                    "type": "string"
+                    "name": "quantity",
+                    "type": "asset"
                 }
             ]
         }
     ],
     "actions": [
         {
-            "name": "testassert",
-            "type": "testassert",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "testprint",
-            "type": "testprint",
+            "name": "attack",
+            "type": "attack",
             "ricardian_contract": ""
         }
     ],
-    "tables": [],
+    "tables": [
+        {
+            "name": "accounts",
+            "type": "account",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
     "ricardian_clauses": [],
     "variants": [],
     "action_results": []
