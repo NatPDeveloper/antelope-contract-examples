@@ -15,8 +15,8 @@ const { eosio } = requireBox('test-extensions/lib/index');
 let deployedContract;
 
 describe(`${contractCode} Contract`, () => {
-    const code = 'bank';
-    const depositor = "depositor";
+    const code = 'bank1';
+    const depositor = "depositor1";
     let depositor_keys;
     let tableHelper;
     let testcontract;
@@ -25,7 +25,7 @@ describe(`${contractCode} Contract`, () => {
             try {
                 tableHelper = await deployer.deploy(ctrt, code);
                 const keys = await getCreateAccount(code);
-                depositor_keys = await getCreateAccount("depositor");
+                depositor_keys = await getCreateAccount(depositor);
                 const eosTestAcc = getEosWrapper({
                   keyProvider: keys.active.privateKey,
                   httpEndpoint: 'http://localhost:8888'

